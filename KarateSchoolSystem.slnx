@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="KarateSchoolSystem.Tests/KarateSchoolSystem.Tests.csproj" />
+  <Project Path="KarateSchoolSystem/KarateSchoolSystem.csproj" />
+</Solution>
