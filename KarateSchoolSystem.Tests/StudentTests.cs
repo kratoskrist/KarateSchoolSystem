@@ -9,6 +9,44 @@ namespace KarateSchoolSystem.Tests
     public class StudentTests
     {
         [TestMethod]
+        public void PasswordGetter_ReturnsPassword()
+        {
+            Student student = TestData.CreateStudent();
+
+            Assert.AreEqual("secret1", student.Password);
+        }
+
+        [TestMethod]
+        public void Constructor_BlankPassword_ThrowsArgumentException()
+        {
+            Assert.ThrowsExactly<ArgumentException>(() =>
+                new Student(
+                    1,
+                    "Anna",
+                    "Lee",
+                    "anna@email.com",
+                    "",
+                    DateTime.Today,
+                    TestData.CreateWhiteBelt(),
+                    "Active"));
+        }
+
+        [TestMethod]
+        public void Constructor_BlankEmail_ThrowsArgumentException()
+        {
+            Assert.ThrowsExactly<ArgumentException>(() =>
+                new Student(
+                    1,
+                    "Anna",
+                    "Lee",
+                    "",
+                    "secret1",
+                    DateTime.Today,
+                    TestData.CreateWhiteBelt(),
+                    "Active"));
+        }
+
+        [TestMethod]
         public void Constructor_ValidData_CreatesStudent()
         {
             Belt belt = TestData.CreateWhiteBelt();
@@ -212,6 +250,24 @@ namespace KarateSchoolSystem.Tests
 
             StringAssert.Contains(result, "Anna Lee");
             StringAssert.Contains(result, "White");
+        }
+
+        [TestMethod]
+        public void AddAttendance_NullAttendance_ThrowsArgumentNullException()
+        {
+            Student student = TestData.CreateStudent();
+
+            Assert.ThrowsExactly<ArgumentNullException>(() =>
+                student.AddAttendance(null!));
+        }
+
+        [TestMethod]
+        public void AddPayment_NullPayment_ThrowsArgumentNullException()
+        {
+            Student student = TestData.CreateStudent();
+
+            Assert.ThrowsExactly<ArgumentNullException>(() =>
+                student.AddPayment(null!));
         }
     }
 }

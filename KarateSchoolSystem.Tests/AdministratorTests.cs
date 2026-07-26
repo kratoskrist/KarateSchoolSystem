@@ -9,7 +9,7 @@ namespace KarateSchoolSystem.Tests
     public class AdministratorTests
     {
         [TestMethod]
-        public void Constructor_ValidData_CreatesAdministrator()
+        public void ConstructorValidDataCreatesAdministrator()
         {
             Administrator administrator =
                 TestData.CreateAdministrator();
@@ -101,6 +101,17 @@ namespace KarateSchoolSystem.Tests
             StringAssert.Contains(
                 administrator.ToString(),
                 "Access Level");
+        }
+
+        [TestMethod]
+        public void Constructor_ValidData_CreatesAdministrator()
+        {
+            Administrator administrator =
+                TestData.CreateAdministrator();
+
+            Assert.AreEqual(3, administrator.AdminId);
+            Assert.AreEqual("Operations", administrator.Department);
+            Assert.AreEqual(3, administrator.AccessLevel);
         }
     }
 }

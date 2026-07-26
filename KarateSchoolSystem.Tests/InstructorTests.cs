@@ -9,7 +9,7 @@ namespace KarateSchoolSystem.Tests
     public class InstructorTests
     {
         [TestMethod]
-        public void Constructor_ValidData_CreatesInstructor()
+        public void ConstructorValidDataCreatesInstructor()
         {
             Instructor instructor = TestData.CreateInstructor();
 
@@ -88,6 +88,16 @@ namespace KarateSchoolSystem.Tests
             Instructor instructor = TestData.CreateInstructor();
 
             StringAssert.Contains(instructor.ToString(), "Kata");
+        }
+
+        [TestMethod]
+        public void Constructor_ValidData_CreatesInstructor()
+        {
+            Instructor instructor = TestData.CreateInstructor();
+
+            Assert.AreEqual(2, instructor.InstructorId);
+            Assert.AreEqual("Kata", instructor.Specialty);
+            Assert.AreEqual("Instructor", instructor.Role);
         }
     }
 }
